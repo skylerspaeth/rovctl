@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>ROV Control</title>
+	<style type="text/css">
+		body { background-color: #09b609; font-family: sans-serif; }
+		h1 { text-align: center; font-size: 4em; }
+		h2 { font-size: 5em; }
+		p { font-size: 3em; }
+	</style>
+</head>
+<body>
+	<h1>ROV Control V1</h1>
+	<hr>
+	<script type="text/javascript">
+		if (window.DeviceMotionEvent==undefined) {
+		}
+
+		window.ondevicemotion = function(event) {
+		  ax = event.accelerationIncludingGravity.x
+		  ay = event.accelerationIncludingGravity.y
+		  az = event.accelerationIncludingGravity.z
+		  rotation = event.rotationRate;
+		  if (rotation != null) {
+		    arAlpha = Math.round(rotation.alpha);
+		    arBeta = Math.round(rotation.beta);
+		    arGamma = Math.round(rotation.gamma);
+		  }
+		}
+
+		window.ondeviceorientation = function(event) {
+		  alpha = Math.round(event.alpha);
+		  beta = Math.round(event.beta);
+		  gamma = Math.round(event.gamma);
+		  document.getElementById("alpha").innerHTML = "Alpha (X): " + alpha;
+		  document.getElementById("beta").innerHTML = "Beta (Y): " + beta;
+		  document.getElementById("gamma").innerHTML = "Gamma (Z): " + gamma;
+		}
+	</script>
+	<h2 id="alpha"></h2>
+	<h2 id="beta"></h2>
+	<h2 id="gamma"></h2>
+	<hr>
+	<p>This is intended as a front end control for the ROV. It grabs your iOS device's gyroscope data through javascript, rounds it, and prints it to your screen.</p>
+
+	<a href="advanced/index.html"><p>View advanced axises</p></a>
+</body>
+</html>
