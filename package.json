@@ -1,7 +1,7 @@
 {
   "name": "rovctl",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "ROV Control",
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.3",
