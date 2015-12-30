@@ -7,14 +7,26 @@
 			background: linear-gradient(to left, #C9FFBF , #FFAFBD);
 			font-family: sans-serif;
 		}
-		h1 { text-align: center; font-size: 2em; }
-		h2 { font-size: 2.5em; text-align: right; margin-right: 10px; }
+		h1 { text-align: center; font-size: 2.5em; }
+		h2 { font-size: 2em; text-align: right; margin-right: 10px; }
 		p { font-size: 1.5em; text-align: right; margin-right: 10px; }
+		.box {
+			width: 30%;
+			height: auto;
+			margin: 10px;
+			padding-bottom: 2%;
+			display: inline-block;
+			border-radius: 30px;
+			border: 2px solid #555;
+			text-align: center;
+			position: relative;
+		}
+		span { font-size: 2em; }
 	</style>
-	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<script type="text/javascript" src="socket.io-1.3.7.js"></script>
 </head>
 <body>
-	<h1>ROV Control V1</h1>
+	<h1>ROV Control</h1>
 	<hr>
 	<script type="text/javascript">
 		var socket = io.connect('http://ssmbp.local:8081');
@@ -22,7 +34,7 @@
 		if (window.DeviceMotionEvent==undefined) {
 		}
 
-		alert('Press OK to begin.')
+		alert('Press OK to begin.');
 
 		window.ondevicemotion = function(event) {
 		  ax = event.accelerationIncludingGravity.x
@@ -40,24 +52,24 @@
 		  alpha = Math.round(event.alpha);
 		  beta = Math.round(event.beta);
 		  gamma = Math.round(event.gamma);
-		  document.getElementById("alpha").innerHTML = "Alpha (X): " + alpha;
-		  document.getElementById("beta").innerHTML = "Beta (Y): " + beta;
-		  document.getElementById("gamma").innerHTML = "Gamma (Z): " + gamma;
+		  document.getElementById("alpha").innerHTML = alpha;
+		  document.getElementById("beta").innerHTML = beta;
+		  document.getElementById("gamma").innerHTML = gamma;
 		  var jsonValues = '{ "values" : [' +
 			'{ "alpha":' + alpha + ' },' +
 			'{ "beta":' + beta + ' },' +
 			'{ "gamma":' + gamma + ' } ]}';
-		  var values = 'Alpha: ' + alpha + '  |  Beta: ' + beta + '  |  Gamma: ' + gamma;
-		  console.log(values);
+		  console.log(jsonValues);
 		  socket.send(jsonValues);
 		};
 	</script>
-	<h2 id="alpha"></h2>
+	<!-- <h2 id="alpha"></h2>
 	<h2 id="beta"></h2>
-	<h2 id="gamma"></h2>
+	<h2 id="gamma"></h2> -->
+	<div class="box"><h1>Alpha:</h1><span id="alpha"></span></div>
+	<div class="box"><h1>Beta:</h1><span id="beta"></span></div>
+	<div class="box"><h1>Gamma:</h1><span id="gamma"></span></div>
 	<hr>
-	<p>This is intended as a front end control for the ROV. It grabs your iOS device's gyroscope data through javascript, rounds it, and prints it to your screen.</p>
-
-	<a href="advanced/index.html"><p>View advanced axises</p></a>
+	<p>v2.0</p>
 </body>
 </html>
