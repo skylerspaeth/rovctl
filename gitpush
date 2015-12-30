@@ -1,4 +1,4 @@
 git add .
-git commit -m "updated package.json"
+git commit -m "removed alert due to errors"
 git push origin master
 echo "Pushed to git"
