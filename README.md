@@ -7,6 +7,5 @@ This project is intended to be used as the control for my ROV. It utilizes `Node
 
 ```
 npm install express --save
-npm install underscore --save
 npm install socket.io --save
 ```
