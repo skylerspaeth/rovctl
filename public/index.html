@@ -30,7 +30,7 @@
 	<hr>
 	<script type="text/javascript">
 		var socket = io.connect('http://ssmbp.local:8081');
-		socket.on('connect', function () {socket.send('Connection established')});
+		// socket.on('connect', function () {socket.send('Connection established')});
 		if (window.DeviceMotionEvent==undefined) {
 		}
 
@@ -53,10 +53,8 @@
 		  document.getElementById("alpha").innerHTML = alpha;
 		  document.getElementById("beta").innerHTML = beta;
 		  document.getElementById("gamma").innerHTML = gamma;
-		  var jsonValues = '{ "values" : [' +
-			'{ "alpha":' + alpha + ' },' +
-			'{ "beta":' + beta + ' },' +
-			'{ "gamma":' + gamma + ' } ]}';
+		  var jsonValues = { alpha: alpha, beta: beta, gamma: gamma};
+		  var jsonValues = JSON.stringify(jsonValues);
 		  console.log(jsonValues);
 		  socket.send(jsonValues);
 		};

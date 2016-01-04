@@ -1,4 +1,4 @@
 git add .
-git commit -m "removed alert due to errors"
+git commit -m "now reads JSON properly"
 git push origin master
 echo "Pushed to git"
