@@ -1,4 +1,4 @@
 git add .
-git commit -m "now reads JSON properly"
+git commit -m "removed need for underscore"
 git push origin master
 echo "Pushed to git"
