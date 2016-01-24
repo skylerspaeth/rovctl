@@ -29,7 +29,8 @@
 	<h1>ROV Control</h1>
 	<hr>
 	<script type="text/javascript">
-		var socket = io.connect('http://ssmbp.local:8081');
+		var socket = io.connect('http://ssmbpr.local:8081'),
+			lastValue = null;
 		if (window.DeviceMotionEvent==undefined) {
 		}
 
@@ -45,17 +46,19 @@
 		  };
 		};
 
-		window.ondeviceorientation = function(event) {
-		  alpha = Math.round(event.alpha);
-		  beta = Math.round(event.beta);
-		  gamma = Math.round(event.gamma);
+		window.ondeviceorientation = function(event, jsonValues) {
+		  var alpha = Math.round(event.alpha),
+		  	beta = Math.round(event.beta),
+		  	gamma = Math.round(event.gamma);
 		  document.getElementById("alpha").innerHTML = alpha;
 		  document.getElementById("beta").innerHTML = beta;
 		  document.getElementById("gamma").innerHTML = gamma;
 		  var jsonValues = { alpha: alpha, beta: beta, gamma: gamma};
-		  var jsonValues = JSON.stringify(jsonValues);
-		  console.log(jsonValues);
-		  socket.send(jsonValues);
+		  jsonValues = JSON.stringify(jsonValues);
+		  if (lastValue != jsonValues) {
+		  	socket.send(jsonValues);
+		  	lastValue = jsonValues;
+		  };
 		};
 	</script>
 	<!-- <h2 id="alpha"></h2>
