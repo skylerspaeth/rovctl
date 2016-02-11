@@ -1,1 +1,1 @@
-print "Sample text"
+print "Python script ran"
