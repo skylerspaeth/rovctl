@@ -16,3 +16,9 @@ Install dependencies
 npm install express --save
 npm install socket.io --save
 ```
+
+Change line 34 of public/index.html to reflect server
+
+```
+var socket = io.connect('http://YOURHOSTNAME.local:8081'),
+```
