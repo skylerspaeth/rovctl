@@ -2,10 +2,11 @@
 <head>
 	<style type="text/css">
 		body {
-			background: #FFAFBD; /* Fallback for old browsers */
-			background: -webkit-linear-gradient(to left, #C9FFBF , #FFAFBD);
-			background: linear-gradient(to left, #C9FFBF , #FFAFBD);
+			background: black; /* Fallback for old browsers */
+			//background: -webkit-linear-gradient(to left, #C9FFBF , #FFAFBD);
+			//background: linear-gradient(to left, #C9FFBF , #FFAFBD);
 			font-family: sans-serif;
+			color: green;
 		}
 		h1 { text-align: center; font-size: 2.5em; }
 		h2 { font-size: 2em; text-align: right; margin-right: 10px; }
@@ -28,7 +29,7 @@
 </head>
 <body>
 	<h1>ROV Control</h1>
-	<hr>
+	<hr style="color: green;">
 	<script type="text/javascript">
 		var socket = io.connect('http://ssmbpr.local:8081'),
 			lastValue = null;
