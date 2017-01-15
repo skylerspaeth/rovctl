@@ -5,10 +5,11 @@ This project is intended to be used as the control for my ROV. It utilizes `Node
 
 **Instructions:** 
 
-*Clone source*
+Clone source
 ```
 git clone https://github.com/skylerspaeth/rovctl.git
 ```
+
 
 Install dependencies
 
@@ -16,6 +17,7 @@ Install dependencies
 npm install express --save
 npm install socket.io --save
 ```
+
 
 Change line 34 of public/index.html to reflect server
 
