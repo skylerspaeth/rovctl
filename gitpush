@@ -1,4 +1,4 @@
 git add .
-git commit -m "removed need for underscore and modified JS"
+git commit -m "update readme"
 git push origin master
 echo "Pushed to git"
